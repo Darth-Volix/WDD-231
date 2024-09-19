@@ -28,4 +28,7 @@ let heroBannerImage = document.querySelector('.hero-banner img');
 heroBannerImage.src = parkData.images[0].url;
 heroBannerImage.alt = parkData.images[0].altText;
 
-// COME BACK TO THIS LATER
+// Add the hero banner content
+let heroContent = document.querySelector('.hero-banner__content');
+
+heroContent.innerHTML = parkInfoTemplate(parkData);
