@@ -113,16 +113,16 @@
 }
 
 .global-header__right .search-icon {
-  padding: 0 1rem;
-  margin-top: 6px;
+  padding: 0 16px;
+  margin-top: 5px;
 }
 
 .global-header__right button {
   background-color: transparent;
   border: none;
   color: white;
-  font-size: 1rem;
-  padding: 1.2em;
+  font-size: 16px;
+  padding: 20px;
   display: flex;
   align-items: center;
   text-transform: uppercase;
