@@ -1,8 +1,6 @@
 import {getRecipes} from "./recipe.mjs";
 const cookieData = getRecipes();
 
-console.log(cookieData);
-
 function recipeTemplate(info) {
     return `
         <div class="recipe">
@@ -11,3 +9,13 @@ function recipeTemplate(info) {
         </div>
     `;
 }
+
+function setCookieInfo(data) {
+    console.log(data);
+    const container = document.querySelector('.recipe-container');
+    //multiple items in an array to loop through all of them we use the .map() method
+    const html = data.map(recipeTemplate);
+    container.innerHTML = html.join('');
+}
+
+setCookieInfo(cookieData);
