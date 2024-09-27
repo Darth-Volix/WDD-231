@@ -291,7 +291,7 @@ a:hover {
   margin: 8px 0;
 }
 
-.media-card > p {
+.media-card p {
   font-size: 14px; 
   line-height: 1.5;
   color: var(--bs-grey-2);
