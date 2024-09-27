@@ -37,9 +37,10 @@ function parkInfoTemplate(info) {
 function mediaCardTemplate(info) {
   return `
   <div class="media-card">
-    <img src="${info.image}" alt="${info.name}">
-    <h3>${info.name}</h3>
-    <a href="${info.link}" class="media-card__title">${info.name}</a>
+    <a href="${info.link}">
+      <img src="${info.image}" alt="${info.name}">
+      <h3>${info.name}</h3>
+    </a>
     <p>${info.description}</p>
   </div>`
 }
@@ -96,7 +97,7 @@ function setMediaCards(data) {
 }
 
 function setFooter(data) {
-  const footer = document.querySelector('.park-footer');
+  const footer = document.querySelector('#park-footer');
   footer.innerHTML = parkFooterTemplate(data);
 }
 
