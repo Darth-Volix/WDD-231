@@ -1,4 +1,5 @@
 export function parkInfoTemplate(info) {
+    // add the park name, designation, and states to the hero
     return `<a href="/" class="hero-banner__title">${info.name}</a>
     <p class="hero-banner__subtitle">
       <span>${info.designation}</span>
@@ -23,6 +24,7 @@ function getVoicePhone(numbers) {
 }
 
 export function mediaCardTemplate(info) {
+    // add the image, name, and description to the media card
     return `
     <div class="media-card">
       <a href="${info.link}">
