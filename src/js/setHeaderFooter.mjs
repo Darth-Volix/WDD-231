@@ -25,11 +25,13 @@ function setHeaderInfo(data) {
 }
 
 function setFooter(data) {
+    // Add the park name to the footer
     const footer = document.querySelector('#park-footer');
     footer.innerHTML = parkFooterTemplate(data);
 }
 
 export function setHeaderFooter(data) {
+    // Call the functions to set the header and footer
     setHeaderInfo(data);
     setFooter(data);
 }
