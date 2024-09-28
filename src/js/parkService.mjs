@@ -180,3 +180,8 @@ export const parkInfoLinks = [
 export function getParkData() {
   return park;
 }
+
+// parkInfoLinks had to have the variable changed from parkData to park because parkData was not defined in this file
+// and the data parkInfoLinks needed was in the park object, which is named park in this file but parkData in the main.js file.
+// You must be careful to use the correct variable names when passing data between files and make sure you are using the 
+// correct variable name in the file you are working in.
