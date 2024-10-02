@@ -51,21 +51,3 @@ getPokemon(url);
 console.log("second: ", results);
 
 getPokemonList(urlList);
-
-
-// this is part of the NPS week 3 assignment, move into own file
-const park_url = "https://developer.nps.gov/api/v1/parks?parkCode=yell&api_key=qTONfh9AQ3xvzwYwJULPUPVllj20kYi46WDBIxVV";
-
-async function getJSON() {
-    let data = null;
-    const response = await fetch(park_url);
-
-    if (response.ok) {
-        data = await response.json();
-        document.querySelector("#outputpark").innerHTML = data.data[0].fullName;
-    } else {
-        console.log("Error");
-    }
-}
-
-getJSON();

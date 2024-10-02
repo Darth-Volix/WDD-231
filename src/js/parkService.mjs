@@ -181,6 +181,26 @@ export function getParkData() {
   return park;
 }
 
+const baseURL = "https://developer.nps.gov/api/v1/";
+const apiKey = import.meta.env.VITE_NPS_API_KEY;
+
+async function getJSON() {
+  const options = {
+    method: "GET",
+    headers: {
+      "X-Api-Key": apiKey
+    }
+  };
+  let data = null;
+  const response = await fetch(baseURL + "parks?parkCode=yell", options);
+  if (response.ok) {
+      data = await response.json();
+  } else {
+      console.log("Respinse not OK");
+  }
+  return data;
+}
+
 // parkInfoLinks had to have the variable changed from parkData to park because parkData was not defined in this file
 // and the data parkInfoLinks needed was in the park object, which is named park in this file but parkData in the main.js file.
 // You must be careful to use the correct variable names when passing data between files and make sure you are using the 
