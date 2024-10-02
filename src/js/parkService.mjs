@@ -177,14 +177,10 @@ export const parkInfoLinks = [
   }
 ];
 
-export function getParkData() {
-  return park;
-}
-
 const baseURL = "https://developer.nps.gov/api/v1/";
 const apiKey = import.meta.env.VITE_NPS_API_KEY;
 
-async function getJSON() {
+export async function getParkData() {
   const options = {
     method: "GET",
     headers: {
