@@ -1,8 +1,6 @@
-import { getParkData, parkInfoLinks} from "./parkService.mjs";
+import { getParkData, getInfoLinks} from "./parkService.mjs";
 import { mediaCardTemplate } from "./templates.mjs";
 import { setHeaderFooter } from "./setHeaderFooter.mjs";
-
-const parkData = getParkData();
 
 function setParkIntro(data) {
   // Add the park name and description to the intro section
@@ -18,7 +16,17 @@ function setMediaCards(data) {
   mediaCardContainer.innerHTML = html.join(''); // join replaces the += and '' replaces the "," that would be added between each card
 }
 
-// Call the functions to set the header, footer, park intro, and media cards
-setHeaderFooter(parkData);
-setParkIntro(parkData);
-setMediaCards(parkInfoLinks);
+// function to intialize the page
+async function init() {
+  // Get the park data
+  const parkData = await getParkData();
+  const links = getInfoLinks(parkData.images);
+
+  // Set header, footer, park intro, and media cards
+  setHeaderFooter(parkData);
+  setParkIntro(parkData);
+  setMediaCards(links);
+}
+
+// Call the init function to initialize the page
+init();

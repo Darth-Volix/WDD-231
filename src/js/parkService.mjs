@@ -1,3 +1,4 @@
+// This object is no longer needed, as the park data is now fetched from the NPS API.
 const park = {
   id: "F58C6D24-8D10-4573-9826-65D42B8B83AD",
   url: "https://www.nps.gov/yell/index.htm",
@@ -155,7 +156,8 @@ const park = {
   designation: "National Park"
 };
 
-export const parkInfoLinks = [
+// This array is no longer needed, as the park data is now fetched from the NPS API.
+const parkInfoLinks = [
   {
     name: "Current Conditions &#x203A;",
     link: "conditions.html",
@@ -177,27 +179,44 @@ export const parkInfoLinks = [
   }
 ];
 
+// Define the base URL for the National Park Service API.
 const baseURL = "https://developer.nps.gov/api/v1/";
+
+// Retrieve the API key from environment variables using Vite's `import.meta.env`.
 const apiKey = import.meta.env.VITE_NPS_API_KEY;
 
+// Function to fetch data about a specific park from the NPS API.
 export async function getParkData() {
+  // Set up the request options for the fetch call, including the HTTP method and API key in the headers.
   const options = {
-    method: "GET",
+    method: "GET", // HTTP method to retrieve data
     headers: {
-      "X-Api-Key": apiKey
+      "X-Api-Key": apiKey // Provide the API key for authentication
     }
   };
-  let data = null;
+
+  let data = null; // Variable to hold the park data
+
+  // Fetch data from the NPS API, targeting the 'parks' endpoint with a specific park code.
   const response = await fetch(baseURL + "parks?parkCode=yell", options);
+
   if (response.ok) {
-      data = await response.json();
+    // If the response is successful, parse the JSON data from the response.
+    data = await response.json();
   } else {
-      console.log("Respinse not OK");
+    // If the response is not successful, log an error message.
+    console.log("Response not OK");
   }
-  return data;
+
+  // Return the park data from the API response.
+  return data.data[0];
 }
 
-// parkInfoLinks had to have the variable changed from parkData to park because parkData was not defined in this file
-// and the data parkInfoLinks needed was in the park object, which is named park in this file but parkData in the main.js file.
-// You must be careful to use the correct variable names when passing data between files and make sure you are using the 
-// correct variable name in the file you are working in.
+export function getInfoLinks(data) {
+// Update the image URLs in the parkInfoLinks array with the images from the park data, skipping the first image in the park data as it is already displayed.
+const withUpdatedImages = parkInfoLinks.map((item, index) => {
+  item.image = data[index + 1].url;
+  return item;
+});
+return withUpdatedImages;
+}
