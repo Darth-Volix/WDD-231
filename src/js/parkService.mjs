@@ -186,7 +186,7 @@ const baseURL = "https://developer.nps.gov/api/v1/";
 const apiKey = import.meta.env.VITE_NPS_API_KEY;
 
 // Function to fetch data about a specific park from the NPS API.
-export async function getParkData() {
+async function getJSON(url) {
   // Set up the request options for the fetch call, including the HTTP method and API key in the headers.
   const options = {
     method: "GET", // HTTP method to retrieve data
@@ -198,7 +198,7 @@ export async function getParkData() {
   let data = null; // Variable to hold the park data
 
   // Fetch data from the NPS API, targeting the 'parks' endpoint with a specific park code.
-  const response = await fetch(baseURL + "parks?parkCode=yell", options);
+  const response = await fetch(baseURL + url, options);
 
   if (response.ok) {
     // If the response is successful, parse the JSON data from the response.
@@ -209,7 +209,15 @@ export async function getParkData() {
   }
 
   // Return the park data from the API response.
-  return data.data[0];
+  return data;
+}
+
+export async function getParkData() {
+  // Fetch the park data from the NPS API using the park code.
+  const parkdata = await getJSON("parks?parkCode=yell");
+
+  // Return the first park data object from the response.
+  return parkdata.data[0];
 }
 
 export function getInfoLinks(data) {
