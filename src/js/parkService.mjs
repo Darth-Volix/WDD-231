@@ -214,7 +214,7 @@ async function getJSON(url) {
 
 export async function getParkData() {
   // Fetch the park data from the NPS API using the park code.
-  const parkdata = await getJSON("parks?parkCode=yell");
+  const parkdata = await getJSON("parks?parkCode=glac");
 
   // Return the first park data object from the response.
   return parkdata.data[0];
@@ -223,7 +223,7 @@ export async function getParkData() {
 export function getInfoLinks(data) {
 // Update the image URLs in the parkInfoLinks array with the images from the park data, skipping the first image in the park data as it is already displayed.
 const withUpdatedImages = parkInfoLinks.map((item, index) => {
-  item.image = data[index + 1].url;
+  item.image = data[index + 2].url;
   return item;
 });
 return withUpdatedImages;
