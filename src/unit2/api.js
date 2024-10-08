@@ -27,8 +27,8 @@ function listTemplate(item) {
 async function renderClimbingList() {
   const endpoint = "activities/parks?q=climbing"
   const listElement = document.getElementById("outputList")
-  const data = await getJson(endpoint)
-  const parks = data.data[0].parks
+  const results = await getJson(endpoint)
+  const parks = results.data[0].parks
   const listHtml = parks.map(listTemplate).join("")
   listElement.innerHTML = listHtml;
 }
