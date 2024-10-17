@@ -228,3 +228,11 @@ const withUpdatedImages = parkInfoLinks.map((item, index) => {
 });
 return withUpdatedImages;
 }
+
+export async function getAlerts() {
+  // Fetch the alerts data from the NPS API using the park code.
+  const alerts = await getJSON("alerts?parkCode=glac");
+
+  // Return the alerts data from the API response.
+  return alerts.data[0];
+}
