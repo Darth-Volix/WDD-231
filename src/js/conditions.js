@@ -14,9 +14,9 @@ async function init() {
 
 function setAlerts(data) {
   // Add any alerts to the alerts section
-  const alertsContainer = document.querySelector('.alerts > ul');
+  const alertsContainer = document.querySelector('.alerts ul');
   const html = data.map(alertTemplate); // map replaces the for loop
-  alertsContainer.innerHTML = html.join(''); // join replaces the += and '' replaces the "," that would be added between each card
+  alertsContainer.insertAdjacentHTML('beforeend', html.join(''));
 }
 
 init();
