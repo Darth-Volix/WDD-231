@@ -52,3 +52,15 @@ export function alertTemplate(alert) {
     <p>${alert.description}</p>
   </div></li>`;
 }
+
+export function visitorCenterTemplate(center) {
+  // add the visitor center name, description, and directions to the visitor center card
+  return `
+  <li class="visitor-center">
+    <div>
+    <h3>${center.name}</h3>
+    <p>${center.description}</p>
+    <p>${center.directionsInfo}</p>
+    </div>
+  </li>`;
+}
