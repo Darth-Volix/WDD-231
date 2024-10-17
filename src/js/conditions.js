@@ -1,21 +1,22 @@
 import {setHeaderFooter} from "./setHeaderFooter.mjs";
 import {getParkData} from "./parkService.mjs";
 import {getAlerts} from "./parkService.mjs";
-import {alertsTemplate} from "./templates.mjs";
+import {alertTemplate} from "./templates.mjs";
 
 async function init() {
   const parkData = await getParkData();
   const alerts = await getAlerts();
+  console.log(alerts);
   
   setHeaderFooter(parkData);
-  setAlerts(alerts);
+  setAlerts(alerts.data);
 }
 
 function setAlerts(data) {
   // Add any alerts to the alerts section
-  const alertsContainer = document.querySelector('.alerts');
-  const html = data.map(alertsTemplate); // map replaces the for loop
-  mediaCardContainer.innerHTML = html.join(''); // join replaces the += and '' replaces the "," that would be added between each card
+  const alertsContainer = document.querySelector('.alerts > ul');
+  const html = data.map(alertTemplate); // map replaces the for loop
+  alertsContainer.innerHTML = html.join(''); // join replaces the += and '' replaces the "," that would be added between each card
 }
 
 init();

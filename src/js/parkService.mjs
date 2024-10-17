@@ -234,5 +234,5 @@ export async function getAlerts() {
   const alerts = await getJSON("alerts?parkCode=glac");
 
   // Return the alerts data from the API response.
-  return alerts.data[0];
+  return alerts;
 }
