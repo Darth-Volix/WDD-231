@@ -46,7 +46,7 @@ export function alertTemplate(alert) {
   }
   
   return `<li class="alert">
-  <svg class="icon" focusable="false" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/images/sprite.symbol.svg#alert-${alertType}"></use></svg>
+  <svg class="icon" focusable="false" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="images/sprite.symbol.svg#alert-${alertType}"></use></svg>
   <div>
     <h3 class="alert-${alertType}">${alert.title}</h3>
     <p>${alert.description}</p>
