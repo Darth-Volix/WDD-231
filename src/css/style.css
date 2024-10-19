@@ -301,6 +301,74 @@ a:hover {
   color: var(--bs-grey-2);
 }
 
+/* Conditions Styles */
+#content {
+  margin: 3em 1em 2em;
+}
+
+#content h1 {
+  font-family: var(--bs-font-serif);
+  font-size: 2em;
+}
+
+/* Alerts Styles */
+.alerts ul {
+  padding-left: 0.5em;
+  list-style: none;
+}
+
+.alert {
+  padding: 0.5rem 0 0.8rem 0;
+  display: flex;
+  gap: 1em;
+  border-bottom: 1px solid var(--bs-grey-3);
+}
+
+.alert svg {
+  margin: 0.25em;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+}
+
+.alert p {
+  margin: 0;
+  font-size: 1em;
+}
+
+.alert h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+/* Visitor Services Styles */
+.visitor details {
+  border: 1px solid var(--bs-grey-3);
+  border-radius: 0.3em;
+  padding: 1em;
+}
+
+.visitor ul {
+  list-style: none;
+  padding: 0;
+}
+
+.visitor ul li {
+  border-bottom: 1px solid var(--bs-grey-3);
+}
+
+/* Activity Styles */
+.activities details {
+  border: 1px solid var(--bs-grey-3);
+  border-radius: 0.3em;
+  padding: 1em;
+}
+
+.activity p{
+  margin: 0;
+  padding: 0;
+}
+
 /* footer styles */
 #park-footer {
   background-image: url(../images/footer-background.png);

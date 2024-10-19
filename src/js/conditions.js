@@ -1,19 +1,17 @@
-import {setHeaderFooter} from "./setHeaderFooter.mjs";
-import {getParkData} from "./parkService.mjs";
-import {getAlerts} from "./parkService.mjs";
-import {getVisitorCenterData} from "./parkService.mjs";
-import {alertTemplate} from "./templates.mjs";
-import {visitorCenterTemplate} from "./templates.mjs";
+import { setHeaderFooter } from "./setHeaderFooter.mjs";
+import { getParkData, getAlerts, getVisitorCenterData } from "./parkService.mjs";
+import { alertTemplate, visitorCenterTemplate, activityTemplate } from "./templates.mjs";
 
 async function init() {
   const parkData = await getParkData();
   const alerts = await getAlerts();
   const visitorCenters = await getVisitorCenterData();
-  console.log(visitorCenters);
+  const activities = parkData.activities;
   
   setHeaderFooter(parkData);
   setAlerts(alerts.data);
   setVisitorCenters(visitorCenters.data);
+  setParkActivities(activities);
 }
 
 function setAlerts(data) {
@@ -30,6 +28,11 @@ function setVisitorCenters(data) {
   visitorCentersContainer.insertAdjacentHTML('beforeend', html.join(''));
 }
 
-init();
+function setParkActivities(data) {
+  // Add the park activities to the activities section
+  const activitiesContainer = document.querySelector('.activities ul');
+  const html = data.map(activityTemplate); // map replaces the for loop
+  activitiesContainer.insertAdjacentHTML('beforeend', html.join(''));
+}
 
-// come back and fix visitor center issue
+init();
