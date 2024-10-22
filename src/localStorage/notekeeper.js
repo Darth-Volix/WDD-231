@@ -10,3 +10,9 @@ document.querySelector('#saveBtn').addEventListener('click', function() {
     localStorage.setItem('note', note);
     alert('Note saved!');
 });
+
+document.querySelector('#clearBtn').addEventListener('click', function() {
+    let note = document.querySelector('#noteInput').value = '';
+    localStorage.removeItem('note');
+    alert('Note Deleted!');
+});
